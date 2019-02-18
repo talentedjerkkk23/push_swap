@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/18 14:44:47 by palan             #+#    #+#             */
-/*   Updated: 2019/02/18 15:30:16 by palan            ###   ########.fr       */
+/*   Created: 2019/02/18 14:35:40 by palan             #+#    #+#             */
+/*   Updated: 2019/02/18 15:32:06 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "stack.h"
 
-# include "../libft/libft.h"
-# include "../program/push_swap.h"
-# include "../stack/stack.h"
-# include <unistd.h>
-# include <stdlib.h>
+void		swap_stack(int **arr, int top)
+{
+	int tmp;
 
-#endif
+	if (top == 0 || top == -1)
+		return ;
+	tmp = (*arr)[top];
+	(*arr)[top] = (*arr)[top - 1];
+	(*arr)[top - 1] = tmp;
+}
+
+void		pop(t_stack *stack)
+{
+	if (stack->top == -1)
+		return ;
+}

@@ -1,15 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/18 14:44:40 by palan             #+#    #+#             */
+/*   Updated: 2019/02/18 15:29:34 by palan            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libft/libft.h"
+# include "../stack/stack.h"
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef struct	s_stack
-{
-	int			*arr;
-	int			size;
-	int			top;
-}				t_stack;
+/*
+**
+**
+**
+**
+**
+**
+*/
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:18:59 by palan             #+#    #+#             */
-/*   Updated: 2019/02/19 18:49:12 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/19 23:46:00 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <limits.h>
 #include <stdio.h>
 
-int		validate_input(int ac, char **av)
+int validate_input(int ac, char **av)
 {
 	int i;
 	int j;
@@ -36,20 +36,21 @@ int		validate_input(int ac, char **av)
 	return (1);
 }
 
-void	check_errors(int ac, char **av)
+void check_errors(int ac, char **av)
 {
 	if (!validate_input(ac, av))
 	{
 		ft_printf("Error\n");
-		exit(0)
+		exit(0);
 	}
 }
 
-int		*parse_array(int ac, char **av)
+int *parse_array(int ac, char **av)
 {
-	int	*arr;
+	int *arr;
 	int i;
 
+	arr = (int *)malloc(sizeof(int) * ac - 1);
 	i = 1;
 	while (i < ac)
 	{
@@ -59,19 +60,22 @@ int		*parse_array(int ac, char **av)
 	return (arr);
 }
 
-int		main(int ac, char **av)
+int main(int ac, char *av[])
 {
-	t_stack	*a;
-	t_stack	*b;
-	int		i;
+	t_stack *a;
+	t_stack *b;
+	int i;
 
+	check_errors(ac, av);
 	a = create_item(ac - 1);
 	b = create_item(ac - 1);
 	a->arr = parse_array(ac, av);
+	b->arr = (int *)malloc(sizeof(int) * (ac - 1));
+	b->size = 0;
 	i = 0;
 	while (i < a->size)
 	{
-		ft_printf("%-11d ptr: %p\n", a->arr[i], a->arr);
+		ft_printf("%-11d ptr: %p\n", a->arr[i], a->arr + i);
 		i++;
 	}
 	return (0);

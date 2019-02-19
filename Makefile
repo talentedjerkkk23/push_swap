@@ -1,6 +1,8 @@
 SRC_CHECKER = checker_src/checker.c
 
-SRC_PROGRAM = program/push_swap.c program/stack.c
+SRC_PROGRAM = program/push_swap.c program/
+
+TEST_SRC = stack/manipulate.c stack/stack.c
 
 HEAD = push_swap.h libft/libft.h
 
@@ -10,9 +12,9 @@ CHECKER_NAME = checker
 
 NAME = push_swap
 
-RUN_CC = clang
+CC = clang
 
-CC = gcc
+# CC = gcc
 
 # FLAGS = -Wall -Wextra -Werror
 
@@ -20,7 +22,7 @@ LIB_SRC = libft
 
 OBJECTS = $(SRC:.c=.o)
 
-.PHONY: all clean fclean re checker push_swap
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
@@ -38,11 +40,14 @@ clean:
 	rm -f *.o
 	@$(MAKE) -C $(LIB_SRC) clean
 
+test_run:
+	$(CC) -g -O3 $(TEST_SRC) main.c -L libft -lft
+
 run:
-	$(RUN_CC) -O3 $(SRC) main.c -L libft -lft -o $(NAME)
+	$(CC) -O3 $(SRC) main.c -L libft -lft -o $(NAME)
 
 debug:
-	$(RUN_CC) -g -O3 $(SRC) main.c -L libft -lft -o $(NAME)
+	$(CC) -g -O3 $(SRC) main.c -L libft -lft -o $(NAME)
 
 fclean: clean
 	@$(MAKE) -C $(LIB_SRC) fclean

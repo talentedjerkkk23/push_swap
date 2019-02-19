@@ -6,7 +6,7 @@
 /*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 17:20:06 by palan             #+#    #+#             */
-/*   Updated: 2019/02/18 00:12:36 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/02/19 23:16:59 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ void		print_rounded(t_fmt *f, char **str)
 		(f->j)++;
 	if (f->precision == 0)
 	{
-		round_prec_zero(f, str, 0);
+		round_prec_zero(f, str);
 		return ;
 	}
-	round_prec_all(f, str, 0);
+	round_prec_all(f, str);
 }
 
 static void	convert_fpart(char **str, int i, double fpart, int prec)

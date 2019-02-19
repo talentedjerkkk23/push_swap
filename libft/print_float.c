@@ -6,7 +6,7 @@
 /*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 17:13:08 by palan             #+#    #+#             */
-/*   Updated: 2019/02/18 00:11:35 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/02/19 23:07:47 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void				print_floating_point(t_fmt *f, va_list ap)
 {
 	long double	n;
 	char		*num;
-	int			num_len;
 
 	n = calc_len_mod(f, ap);
 	if (n < 0)
@@ -103,7 +102,6 @@ void				print_floating_point(t_fmt *f, va_list ap)
 	if (!f->have_prec)
 		f->precision = 6;
 	num = double_to_str(n, f->precision + 20, 0);
-	num_len = l_strlen(num);
 	if (f->minus)
 		f->zero = 0;
 	if (f->plus)

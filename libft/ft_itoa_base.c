@@ -13,7 +13,7 @@ char *ft_itoa_base(long value, int base, short mode)
 	flag = (value < 0 ? 1 : 0);
 	rep = (mode == 1) ? ft_strdup("0123456789abcdef") : ft_strdup("0123456789ABCDEF");
 	num = value;
-	num = ((num < 0) ? (num *= -1) : num);
+	num = ((num < 0) ? (-num) : num);
 	while (num /= base)
 		len++;
 	len = len + flag + 1;

@@ -6,7 +6,7 @@
 /*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 15:59:19 by palan             #+#    #+#             */
-/*   Updated: 2019/02/18 00:10:30 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/02/19 23:16:46 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	round_prec_zero_extra(t_fmt *f, char **s)
 	(*s)[f->j] += 1;
 }
 
-void	round_prec_zero(t_fmt *f, char **s, int flag)
+void	round_prec_zero(t_fmt *f, char **s)
 {
 	if ((*s)[f->j + 1] >= '5' || f->was_m == 1)
-		flag = 1;
+		;
 	else
 		return ;
 	(f->j)--;
@@ -50,7 +50,7 @@ void	round_prec_zero(t_fmt *f, char **s, int flag)
 		(*s)[f->j] += 1;
 }
 
-void	round_prec_extra(t_fmt *f, char **s, int flag)
+void	round_prec_extra(t_fmt *f, char **s)
 {
 	(*s)[f->j--] = '0';
 	while (f->j > 0 && (*s)[f->j] && (*s)[f->j] == '9' && (*s)[f->j] != '.')
@@ -58,7 +58,7 @@ void	round_prec_extra(t_fmt *f, char **s, int flag)
 	if ((*s)[f->j] == '.')
 	{
 		f->was_m = 1;
-		round_prec_zero(f, s, flag);
+		round_prec_zero(f, s);
 		return ;
 	}
 	if (f->j == 0 && (*s)[0] == '9')
@@ -71,18 +71,18 @@ void	round_prec_extra(t_fmt *f, char **s, int flag)
 	(*s)[f->j] += 1;
 }
 
-void	round_prec_all(t_fmt *f, char **s, int flag)
+void	round_prec_all(t_fmt *f, char **s)
 {
 	if ((*s)[f->j + 1] >= '5')
-		flag = 1;
+		;
 	else
 		return ;
 	if ((*s)[f->j] == '9')
 	{
-		round_prec_extra(f, s, flag);
+		round_prec_extra(f, s);
 	}
 	else if ((*s)[f->j] == '.')
-		round_prec_zero(f, s, flag);
+		round_prec_zero(f, s);
 	else
 		(*s)[f->j] += 1;
 }

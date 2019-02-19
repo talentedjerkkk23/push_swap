@@ -20,12 +20,14 @@ OBJECTS = $(SRCS:.c=.o)
 
 INCLUDES = libft.h
 
-
+# ifeq ($(UNAME_S),Linux)
+	# FLAGS += -fPIC
+# endif
 
 all: $(NAME)
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -c -o $@ $<
+	@$(CC) $(FLAGS) -c -o $@ $<
 
 $(NAME): $(OBJECTS)
 	@$(CC) $(FLAGS) -c $(SRCS) -I$(INCLUDES)

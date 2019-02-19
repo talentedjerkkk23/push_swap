@@ -6,7 +6,7 @@
 /*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 18:52:40 by palan             #+#    #+#             */
-/*   Updated: 2019/02/18 00:10:14 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/02/19 23:16:40 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ typedef struct	s_fmt
 
 char			*double_to_str(long double num, int k_prec, int rem);
 void			move_str_right(char **str);
-void			round_prec_zero(t_fmt *f, char **str, int flag);
-void			round_prec_all(t_fmt *f, char **str, int flag);
+void			round_prec_zero(t_fmt *f, char **str);
+void			round_prec_all(t_fmt *f, char **str);
 void			round_nine(t_fmt *f, char **str);
 void			set_jz_modif(const char *fmt, t_fmt *f);
 int				l_strlen(char *str);

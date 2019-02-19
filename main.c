@@ -6,7 +6,7 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:18:59 by palan             #+#    #+#             */
-/*   Updated: 2019/02/18 17:42:26 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/19 18:49:12 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,64 @@
 #include <limits.h>
 #include <stdio.h>
 
-int		main(int ac, char **av)
+int		validate_input(int ac, char **av)
 {
-	t_stack *first;
-	t_stack *tmp;
-	t_stack *item;
+	int i;
+	int j;
 
-	first = create_item(ft_atoi(av[1]));
-	int i = 2;
+	i = 1;
+	j = 0;
 	while (i < ac)
 	{
-		item = create_item(ft_atoi(av[i]));
-		append_item(first, &item);
+		j = 0;
+		while (av[i][j])
+		{
+			if (!ft_isdigit(av[i][j]))
+				return (0);
+			j++;
+		}
 		i++;
 	}
-	i = 0;
-	tmp = first;
-	while (tmp->next != first)
+	return (1);
+}
+
+void	check_errors(int ac, char **av)
+{
+	if (!validate_input(ac, av))
 	{
-		ft_printf("%-11d ptr: %p\n", tmp->value, tmp);
-		tmp = tmp->next;
-		if (tmp->next == first)
-			ft_printf("%-11d ptr: %p\n", tmp->value, tmp);
+		ft_printf("Error\n");
+		exit(0)
+	}
+}
+
+int		*parse_array(int ac, char **av)
+{
+	int	*arr;
+	int i;
+
+	i = 1;
+	while (i < ac)
+	{
+		arr[i - 1] = ft_atoi(av[i]);
+		i++;
+	}
+	return (arr);
+}
+
+int		main(int ac, char **av)
+{
+	t_stack	*a;
+	t_stack	*b;
+	int		i;
+
+	a = create_item(ac - 1);
+	b = create_item(ac - 1);
+	a->arr = parse_array(ac, av);
+	i = 0;
+	while (i < a->size)
+	{
+		ft_printf("%-11d ptr: %p\n", a->arr[i], a->arr);
+		i++;
 	}
 	return (0);
 }

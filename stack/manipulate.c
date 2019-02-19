@@ -6,54 +6,75 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:30:46 by palan             #+#    #+#             */
-/*   Updated: 2019/02/18 17:09:14 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/19 18:17:08 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-t_stack		*create_item(int val)
+t_stack		*create_item(int size)
 {
 	t_stack *item;
 
 	item = (t_stack*)malloc(sizeof(t_stack));
 	if (item == NULL)
 		return (NULL);
-	item->top = 0;
-	item->value = val;
-	item->next = NULL;
+	item->arr = (int*)malloc(sizeof(int) * size);
+	if (item->arr == NULL)
+		return (NULL);
+	item->size = size;
+	item->max_size = size;
 	return (item);
 }
 
-void		append_item(t_stack *stack, t_stack **elem)
+void		fill_stack(t_stack *stack, int *mass)
 {
-	t_stack	*tmp;
-	t_stack	*begin;
+	int i;
 
-	if (stack->next == NULL)
+	i = 0;
+	while (i < stack->size)
 	{
-		stack->next = *elem;
-		(*elem)->next = stack;
+		stack->arr[i] = mass[i];
+		i++;
 	}
-	tmp = stack;
-	begin = stack;
-	while (tmp->next != begin)
-		tmp = tmp->next;
-	tmp->next = *elem;
-	(*elem)->next = begin;
 }
 
-t_stack		*pop_item(t_stack *stack)
+void		rerange(t_stack *stack)
 {
-	t_stack	*tmp;
-	t_stack	*begin;
-	t_stack *ret;
+	int i;
+	int tmp;
 
-	tmp = stack;
-	begin = stack;
-	while (tmp->next->next != begin)
-		tmp = tmp->next;
-	ret = tmp->next->next;
-	tmp->next = begin;
+	i = 0;
+	i = stack->size;
+	while (i > 0)
+	{
+		tmp = stack->arr[i - 1];
+		stack->arr[i] = tmp;
+		i--;
+	}
+}
+
+void		push_item(t_stack *first, t_stack *second)
+{
+	int	item;
+
+	item = pop_item(first);
+	rerange(second);
+	second->arr[0] = item;
+}
+
+int			pop_item(t_stack *stack)
+{
+	int ret;
+	int i;
+
+	i = 0;
+	ret = stack->arr[0];
+	while (i < stack->size - 1)
+	{
+		stack->arr[i] = stack->arr[i + 1];
+		i++;
+	}
+	stack->size--;
 	return (ret);
 }

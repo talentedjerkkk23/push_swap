@@ -3,47 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
+/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:18:59 by palan             #+#    #+#             */
-/*   Updated: 2019/02/19 23:46:00 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/02/20 13:59:11 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "program/push_swap.h"
 #include "checker_src/checker.h"
+#include "validation/validation.h"
 #include <limits.h>
 #include <stdio.h>
 
-int validate_input(int ac, char **av)
-{
-	int i;
-	int j;
 
-	i = 1;
-	j = 0;
-	while (i < ac)
-	{
-		j = 0;
-		while (av[i][j])
-		{
-			if (!ft_isdigit(av[i][j]))
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-void check_errors(int ac, char **av)
-{
-	if (!validate_input(ac, av))
-	{
-		ft_printf("Error\n");
-		exit(0);
-	}
-}
 
 int *parse_array(int ac, char **av)
 {
@@ -59,6 +32,7 @@ int *parse_array(int ac, char **av)
 	}
 	return (arr);
 }
+
 
 int main(int ac, char *av[])
 {

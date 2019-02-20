@@ -2,7 +2,7 @@ SRC_CHECKER = checker_src/checker.c
 
 SRC_PROGRAM = program/push_swap.c program/
 
-TEST_SRC = stack/manipulate.c stack/stack.c
+TEST_SRC = stack/manipulate.c stack/stack.c validation/validation.c
 
 HEAD = push_swap.h libft/libft.h
 

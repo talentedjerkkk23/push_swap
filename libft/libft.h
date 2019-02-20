@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
+/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:24:26 by palan             #+#    #+#             */
-/*   Updated: 2019/02/17 23:58:21 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/02/20 13:43:22 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ char				*ft_strnew(size_t size);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 void				ft_strdel(char **as);
 int					ft_atoi(const char *str);
+long				ft_ltoi(const char *str);
 char				*ft_itoa(int n);
 char				*ft_ltoa(long long n);
 char				*ft_ultoa(unsigned long n);

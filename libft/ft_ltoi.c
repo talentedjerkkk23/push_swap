@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_ltoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 16:12:31 by palan             #+#    #+#             */
-/*   Updated: 2019/02/20 13:44:20 by palan            ###   ########.fr       */
+/*   Created: 2019/02/20 13:41:18 by palan             #+#    #+#             */
+/*   Updated: 2019/02/20 13:43:08 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+#include "libft.h"
+
+long	ft_ltoi(const char *str)
 {
-	long int		res;
-	int				sign;
-	int				i;
+	long	res;
+	int		sign;
+	int		i;
 
 	res = 0;
 	sign = 1;
@@ -36,5 +38,5 @@ int	ft_atoi(const char *str)
 			return ((sign == -1) ? 0 : -1);
 		i++;
 	}
-	return ((int)(res * sign));
+	return (res * sign);
 }

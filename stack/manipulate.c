@@ -6,7 +6,7 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:30:46 by palan             #+#    #+#             */
-/*   Updated: 2019/02/19 18:17:08 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/20 16:56:59 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,26 @@ void		fill_stack(t_stack *stack, int *mass)
 	}
 }
 
-void		rerange(t_stack *stack)
+void		shift_up(t_stack *stack)
 {
 	int i;
 	int tmp;
 
 	i = 0;
+	tmp = stack->arr[0];
+	while (i < stack->size)
+	{
+		stack->arr[i] = stack->arr[i + 1];
+		i++;
+	}
+	stack->arr[i] = tmp;
+}
+
+void		rerange(t_stack *stack)
+{
+	int i;
+	int tmp;
+
 	i = stack->size;
 	while (i > 0)
 	{
@@ -52,12 +66,15 @@ void		rerange(t_stack *stack)
 		stack->arr[i] = tmp;
 		i--;
 	}
+	stack->size++;
 }
 
 void		push_item(t_stack *first, t_stack *second)
 {
 	int	item;
 
+	if (first->size == 0)
+		return ;
 	item = pop_item(first);
 	rerange(second);
 	second->arr[0] = item;

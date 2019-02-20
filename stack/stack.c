@@ -6,25 +6,35 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:35:40 by palan             #+#    #+#             */
-/*   Updated: 2019/02/19 16:28:23 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/20 15:27:34 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-void		swap_stack(int **arr, int top)
+void		swap_stack(t_stack *stack)
 {
 	int tmp;
 
-	if (top == 0 || top == -1)
+	if (stack->size <= 1)
 		return ;
-	tmp = (*arr)[top];
-	(*arr)[top] = (*arr)[top - 1];
-	(*arr)[top - 1] = tmp;
+	tmp = stack->arr[0];
+	stack->arr[0] = stack->arr[1];
+	stack->arr[1] = tmp;
 }
 
-void		pop(t_stack *stack)
+void		ss(t_stack *a, t_stack *b)
 {
-	if (stack->top == -1)
-		return ;
+	swap_stack(a);
+	swap_stack(b);
+}
+
+void		push_a(t_stack *a, t_stack *b)
+{
+	push_item(a, b);
+}
+
+void		push_b(t_stack *a, t_stack *b)
+{
+	push_item(b, a);
 }

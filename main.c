@@ -6,7 +6,7 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:18:59 by palan             #+#    #+#             */
-/*   Updated: 2019/02/20 13:59:11 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/20 14:18:56 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 #include <limits.h>
 #include <stdio.h>
 
-
-
-int *parse_array(int ac, char **av)
+int		*parse_array(int ac, char **av)
 {
 	int *arr;
 	int i;
@@ -33,12 +31,11 @@ int *parse_array(int ac, char **av)
 	return (arr);
 }
 
-
-int main(int ac, char *av[])
+int		main(int ac, char *av[])
 {
-	t_stack *a;
-	t_stack *b;
-	int i;
+	t_stack	*a;
+	t_stack	*b;
+	int		i;
 
 	check_errors(ac, av);
 	a = create_item(ac - 1);

@@ -6,7 +6,7 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:55:41 by palan             #+#    #+#             */
-/*   Updated: 2019/02/20 14:13:06 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/20 14:58:39 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,11 @@ int		validate_input(int ac, char **av)
 		j = 0;
 		while (av[i][j])
 		{
-			if (!ft_isdigit(av[i][j]) && (av[i][j] != '-'))
+			if (j == 0 && !ft_isdigit(av[i][j]) && av[i][j] != '-')
+				return (0);
+			else if (j == 0 && av[i][j] == '-' && ft_strlen(av[i]) == 1)
+				return (0);
+			else if (j != 0 && !ft_isdigit(av[i][j]))
 				return (0);
 			j++;
 		}

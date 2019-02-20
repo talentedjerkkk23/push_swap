@@ -6,7 +6,7 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:28:30 by palan             #+#    #+#             */
-/*   Updated: 2019/02/19 17:09:08 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/20 15:12:51 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ typedef struct	s_stack
 	int				max_size;
 }					t_stack;
 
+void				fill_stack(t_stack *stack, int *mass);
 t_stack				*create_item(int val);
-void				append_item(t_stack *stack, t_stack **elem);
+void				push_item(t_stack *first, t_stack *second);
 int					pop_item(t_stack *stack);
 #endif

@@ -6,7 +6,7 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:55:25 by palan             #+#    #+#             */
-/*   Updated: 2019/02/20 13:58:49 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/20 14:14:58 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 
 int		is_int(int ac, char **av);
 int		validate_input(int ac, char **av);
-void 	check_errors(int ac, char **av);
+void	check_errors(int ac, char **av);
 
 #endif

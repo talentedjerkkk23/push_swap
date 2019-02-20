@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manipulate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:30:46 by palan             #+#    #+#             */
-/*   Updated: 2019/02/20 16:56:59 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/20 22:01:37 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,48 +25,6 @@ t_stack		*create_item(int size)
 	item->size = size;
 	item->max_size = size;
 	return (item);
-}
-
-void		fill_stack(t_stack *stack, int *mass)
-{
-	int i;
-
-	i = 0;
-	while (i < stack->size)
-	{
-		stack->arr[i] = mass[i];
-		i++;
-	}
-}
-
-void		shift_up(t_stack *stack)
-{
-	int i;
-	int tmp;
-
-	i = 0;
-	tmp = stack->arr[0];
-	while (i < stack->size)
-	{
-		stack->arr[i] = stack->arr[i + 1];
-		i++;
-	}
-	stack->arr[i] = tmp;
-}
-
-void		rerange(t_stack *stack)
-{
-	int i;
-	int tmp;
-
-	i = stack->size;
-	while (i > 0)
-	{
-		tmp = stack->arr[i - 1];
-		stack->arr[i] = tmp;
-		i--;
-	}
-	stack->size++;
 }
 
 void		push_item(t_stack *first, t_stack *second)
@@ -92,6 +50,6 @@ int			pop_item(t_stack *stack)
 		stack->arr[i] = stack->arr[i + 1];
 		i++;
 	}
-	stack->size--;
+	(stack->size)--;
 	return (ret);
 }

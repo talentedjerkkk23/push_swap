@@ -3,7 +3,8 @@ SRC_CHECKER = checker_src/checker.c
 SRC_PROGRAM = program/push_swap.c program/
 
 TEST_SRC = stack/manipulate.c stack/stack.c stack/stack_utils.c \
-			validation/validation.c stack/operations.c
+			validation/validation.c stack/operations.c helpers/helpers.c \
+			checker_src/read_input.c checker_src/validate_comands.c
 
 HEAD = push_swap.h libft/libft.h
 
@@ -40,6 +41,9 @@ $(NAME): $(OBJECTS)
 clean:
 	rm -f *.o
 	@$(MAKE) -C $(LIB_SRC) clean
+
+run_checker:
+	$(CC) -g -O3 $(TEST_SRC) checker_src/checker.c -L libft -lft -o $(CHECKER_NAME)
 
 test_run:
 	$(CC) -g -O3 $(TEST_SRC) main.c -L libft -lft

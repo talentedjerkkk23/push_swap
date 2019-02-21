@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
+/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:35:40 by palan             #+#    #+#             */
-/*   Updated: 2019/02/20 21:34:11 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/02/21 16:30:01 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void		rev_rotate_a(t_stack *a)
 {
 	shift_down(a);
 }
+
 void		rev_rotate_b(t_stack *b)
 {
 	shift_down(b);

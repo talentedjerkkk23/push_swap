@@ -3,14 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:44:28 by palan             #+#    #+#             */
-/*   Updated: 2019/02/22 16:40:15 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/22 23:42:19 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+
+int		*copy_arr(int *arr, int size)
+{
+	int	i;
+	int	*new_arr;
+
+	i = 0;
+	new_arr = (int*)malloc(sizeof(int) * size);
+	while (i < size)
+	{
+		new_arr[i] = arr[i];
+		i++;
+	}
+	return (new_arr);
+}
+
+int		is_sorted(int *valid_arr, int *sorted_arr, int size)
+{
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (valid_arr[i] != sorted_arr[i])
+		{
+			write(1, "KO\n", 3);
+			exit(0);
+		}
+		i++;
+	}
+	return (1);
+}
 
 int		main(int ac, char **av)
 {
@@ -18,6 +51,7 @@ int		main(int ac, char **av)
 	t_stack	*b;
 	int		i;
 	char	*oper;
+	int		*arr;
 
 	if (ac == 1)
 		exit(0);
@@ -37,8 +71,9 @@ int		main(int ac, char **av)
 	// free(b->arr);
 	// free(b);
 	// free(a);
-
+	arr = copy_arr(a->arr, a->size);
 	qs_with_stack(a, b, 0, a->size - 1);
+	
 	// quick_sort(a, 0, a->size - 1);
 	// print_info(a, b);
 	// ft_printf("%d\n", 24 >> 1);

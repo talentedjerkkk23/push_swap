@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 14:13:13 by palan             #+#    #+#             */
-/*   Updated: 2019/02/22 18:35:40 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/22 23:21:22 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,12 @@ int		qs_with_stack(t_stack *a, t_stack *b, int low, int high)
 	}
 	min_b = find_min(b);
 	ft_printf("min_b: %d\n", min_b);
+	while (b->arr[0] != min_b)
+	{
+		rotate_b(b);
+	}
+
+	// qs_with_stack(a, b, low, high);
 	print_info(a, b);
 	return (0);
 }

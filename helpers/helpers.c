@@ -6,7 +6,7 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 16:38:09 by palan             #+#    #+#             */
-/*   Updated: 2019/02/21 16:39:03 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/22 18:06:30 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	print_info(t_stack *a, t_stack *b)
 		if (i > b->size - 1)
 			ft_printf("| %-11d |             |\n", a->arr[i]);
 		else if (i > a->size - 1)
-			ft_printf("|           | %-11d |\n", b->arr[i]);
+			ft_printf("|             | %-11d |\n", b->arr[i]);
 		else
 			ft_printf("| %-11d | %-11d |\n", a->arr[i], b->arr[i]);
 		i++;

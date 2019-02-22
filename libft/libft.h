@@ -6,17 +6,18 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:24:26 by palan             #+#    #+#             */
-/*   Updated: 2019/02/20 13:43:22 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/22 13:16:04 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include "ft_printf.h"
+# include "ft_printf.h"
 # include <string.h>
 # define BUFF_SIZE 5
 
+void				ft_swap(int *a, int *b);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_strcmp(const char *s1, const char *s2);
 size_t				ft_strlen(const char *s);

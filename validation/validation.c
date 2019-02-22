@@ -6,13 +6,13 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:55:41 by palan             #+#    #+#             */
-/*   Updated: 2019/02/20 14:58:39 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/22 13:47:09 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validation.h"
 
-int	is_int(int ac, char **av)
+int		is_int(int ac, char **av)
 {
 	int		i;
 	long	n;
@@ -23,6 +23,27 @@ int	is_int(int ac, char **av)
 		n = ft_ltoi(av[i]);
 		if (n < -2147483648 || n > 2147483647 || ft_strlen(av[i]) > 11)
 			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int		is_all_unique(int *arr, int size)
+{
+	int i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while ((i + 1) < size)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (arr[i] == arr[j])
+				return (0);
+			j++;
+		}
 		i++;
 	}
 	return (1);

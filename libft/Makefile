@@ -14,7 +14,7 @@ SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c 
 		ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_reversestr.c ft_free2darr.c \
 		get_next_line.c ft_ltoa.c ft_itoa_base.c ft_ltoa_base.c	ft_ultoa.c ft_printf.c parser.c ft_format_create.c \
 		ft_print_type.c print_utils.c print_char.c print_unsigned_decimal.c print_hex.c print_decimal.c print_octal.c \
-		print_string.c print_ptr.c print_float.c float_utils.c roundf_utils.c ft_ltoi.c
+		print_string.c print_ptr.c print_float.c float_utils.c roundf_utils.c ft_ltoi.c ft_swap.c
 
 OBJECTS = $(SRCS:.c=.o)
 

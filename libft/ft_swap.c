@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/18 14:44:40 by palan             #+#    #+#             */
-/*   Updated: 2019/02/22 16:38:48 by palan            ###   ########.fr       */
+/*   Created: 2019/02/22 13:16:31 by palan             #+#    #+#             */
+/*   Updated: 2019/02/22 13:17:23 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "../checker_src/checker.h"
-# include "../stack/stack.h"
-# include <unistd.h>
-# include <stdlib.h>
+void	ft_swap(int *a, int *b)
+{
+	int tmp;
 
-/*
-**
-**
-**
-**
-**
-**
-*/
-
-int		quick_sort(t_stack *stack, int low, int high);
-int		qs_with_stack(t_stack *a, t_stack *b, int low, int high);
-
-#endif
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}

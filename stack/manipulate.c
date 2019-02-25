@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manipulate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:30:46 by palan             #+#    #+#             */
-/*   Updated: 2019/02/21 11:13:35 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/24 15:48:55 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_stack		*create_item(int size)
 		return (NULL);
 	item->size = size;
 	item->max_size = size;
+	item->operations = 0;
 	return (item);
 }
 
@@ -52,4 +53,16 @@ int			pop_item(t_stack *stack)
 	}
 	(stack->size)--;
 	return (ret);
+}
+
+void		sa(t_stack *a)
+{
+	swap_stack(a);
+	a->operations++;
+}
+
+void		sb(t_stack *b)
+{
+	swap_stack(b);
+	b->operations++;
 }

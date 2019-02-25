@@ -6,7 +6,7 @@
 /*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:44:28 by palan             #+#    #+#             */
-/*   Updated: 2019/02/22 23:42:19 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/02/24 15:07:12 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,9 @@ int		main(int ac, char **av)
 	// free(a);
 	arr = copy_arr(a->arr, a->size);
 	qs_with_stack(a, b, 0, a->size - 1);
-	
+	a->operations += b->operations;
+	b->operations = 0;
+	ft_printf("operations: %d\n", a->operations);
 	// quick_sort(a, 0, a->size - 1);
 	// print_info(a, b);
 	// ft_printf("%d\n", 24 >> 1);

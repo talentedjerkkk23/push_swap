@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 17:32:25 by palan             #+#    #+#             */
-/*   Updated: 2019/02/21 11:21:42 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/24 15:48:00 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,15 @@ void		rerange(t_stack *stack)
 		i--;
 	}
 	(stack->size)++;
+}
+
+void		swap_stack(t_stack *stack)
+{
+	int tmp;
+
+	if (stack->size <= 1)
+		return ;
+	tmp = stack->arr[0];
+	stack->arr[0] = stack->arr[1];
+	stack->arr[1] = tmp;
 }

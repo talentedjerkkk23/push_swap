@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:28:30 by palan             #+#    #+#             */
-/*   Updated: 2019/02/21 16:28:30 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/24 15:58:13 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,11 @@ typedef struct	s_stack
 	int				size;
 	short			top;
 	int				max_size;
+	unsigned		operations;
 }					t_stack;
 
+void				sb(t_stack *b);
+void				sa(t_stack *a);
 void				operations_test(t_stack *a, t_stack *b);
 int					*parse_array(int ac, char **av);
 void				print_info(t_stack *a, t_stack *b);

@@ -48,6 +48,40 @@ int find_max(t_stack *stack)
 	return (max);
 }
 
+int find_prev_max(t_stack *stack)
+{
+	int i;
+	int max;
+	int	curr_max;
+
+	i = 0;
+	curr_max = find_max(stack);
+	if (stack->size == 0)
+		return (0);
+	max = stack->arr[0];
+	while (i < stack->size)
+	{
+		if (stack->arr[i] > max && stack->arr[i] != curr_max)
+			max = stack->arr[i];
+		i++;
+	}
+	return (max);
+}
+
+int find_position(t_stack *stack, int value)
+{
+	int pos;
+
+	pos = 0;
+	if (stack->size == 0)
+		return (-1);
+	if (stack->size == 1)
+		return 0;
+	while (stack->arr[pos] != value)
+		pos++;
+	return (pos);
+}
+
 int qs_with_stack(t_stack *a, t_stack *b, int low, int high)
 {
 	int pivot;
@@ -56,6 +90,8 @@ int qs_with_stack(t_stack *a, t_stack *b, int low, int high)
 	int max_b;
 	int max_a;
 	int min_a;
+	int pos;
+	int	flag;
 
 	// pivot = a->arr[a->size >> 1];
 	pivot = a->arr[a->size - 1];
@@ -68,6 +104,66 @@ int qs_with_stack(t_stack *a, t_stack *b, int low, int high)
 	ft_printf("min_b: %d\n", min_b);
 	ft_printf("max_b: %d\n", max_b);
 	print_info(a, b);
+	while (a->size != 0)
+		push_b(a, b);
+	while (b->size != 0)
+	{
+		flag = 0;
+		max_b = find_max(b);
+		pos = find_position(b, max_b);
+		if (pos < (1 + b->size / 2))
+		{
+			while (b->arr[0] != max_b)
+			{
+				if (flag == 0 && b->arr[0] == find_prev_max(b))
+				{
+					push_a(a, b);
+					flag = 1;
+				}
+				else
+					rotate_b(b);
+
+				// if (b->arr[i] < b->arr[i + 1])
+				// 	sb(b);
+			}
+		}
+		else
+		{
+			while (b->arr[0] != max_b)
+			{
+				if (flag == 0 && b->arr[0] == find_prev_max(b))
+				{
+					push_a(a, b);
+					flag = 1;
+				}
+				else
+					rev_rotate_b(b);
+				// if (b->arr[i] < b->arr[i + 1])
+				// 	sb(b);
+			}
+		}
+		push_a(a, b);
+		if (a->size > 1 && b->size > 1 && a->arr[i] > a->arr[i + 1] && b->arr[i] < b->arr[i + 1])
+			ss(a, b);
+		else if (a->size > 1 && a->arr[i] > a->arr[i + 1])
+			sa(a);
+		else if (b->size > 1 && b->arr[i] < b->arr[i + 1])
+			sb(b);
+	}
+	print_info(a, b);
+
+
+
+
+
+
+
+
+
+
+
+
+	return 0;
 	while (a->arr[i] != pivot)
 	{
 		if (a->arr[i] < pivot)

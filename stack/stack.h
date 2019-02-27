@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
+/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:28:30 by palan             #+#    #+#             */
-/*   Updated: 2019/02/24 15:58:13 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/02/27 14:19:38 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 typedef struct	s_stack
 {
 	int				*arr;
+	int				*ideal;
 	int				size;
 	short			top;
 	int				max_size;

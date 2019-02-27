@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
+/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:44:28 by palan             #+#    #+#             */
-/*   Updated: 2019/02/24 15:07:12 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/02/27 16:41:52 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int		main(int ac, char **av)
 	t_stack	*b;
 	int		i;
 	char	*oper;
-	int		*arr;
 
 	if (ac == 1)
 		exit(0);
@@ -64,15 +63,21 @@ int		main(int ac, char **av)
 		write(2, "Error\n", 6);
 		exit(0);
 	}
+	a->ideal = copy_arr(a->arr, a->size);
+	quick_sort(a, 0, a->size - 1);
 	b->arr = (int *)malloc(sizeof(int) * (ac - 1));
 	b->size = 0;
 	i = 0;
+
 	// free(a->arr);
 	// free(b->arr);
 	// free(b);
-	// free(a);
-	arr = copy_arr(a->arr, a->size);
-	qs_with_stack(a, b, 0, a->size - 1);
+	while(i < a->size)
+	{
+		ft_printf("%d\n", a->ideal[i]);
+		i++;
+	}
+	qs_with_stack(a, b, find_min(a), find_max(a));
 	a->operations += b->operations;
 	b->operations = 0;
 	ft_printf("operations: %d\n", a->operations);

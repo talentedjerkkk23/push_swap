@@ -3,196 +3,214 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
+/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 14:13:13 by palan             #+#    #+#             */
-/*   Updated: 2019/02/24 17:44:349 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/02/27 17:58:53 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int find_min(t_stack *stack)
+int		get_min(int *arr, int size)
 {
 	int i;
 	int min;
+	int	min_id;
 
 	i = 0;
-	if (stack->size == 0)
-		return (0);
-	min = stack->arr[0];
-	while (i < stack->size)
+	min = arr[0];
+	min_id = 0;
+	while (i < size)
 	{
-		if (stack->arr[i] < min)
-			min = stack->arr[i];
+		if (min > arr[i])
+		{
+			min = arr[i];
+			min_id = i;
+		}
 		i++;
 	}
-	return (min);
+	return (min_id);
 }
 
-int find_max(t_stack *stack)
+int	find_best_elem(t_stack *a, t_stack *b)
 {
 	int i;
-	int max;
+	int best;
+	int j;
+	int	*opers;
 
 	i = 0;
-	if (stack->size == 0)
+	if (b->size < 2)
 		return (0);
-	max = stack->arr[0];
-	while (i < stack->size)
+	opers = (int*)malloc(sizeof(int) * b->size);
+	best = b->arr[0];
+	while (i < b->size)
 	{
-		if (stack->arr[i] > max)
-			max = stack->arr[i];
+		opers[i] = count_offset(a, b->arr[i]) +
+		(i >= b->size / 2 ? b->size - i : i);
 		i++;
 	}
-	return (max);
+	i = get_min(opers, b->size);
+	free(opers);
+	return (i);
 }
 
-int find_prev_max(t_stack *stack)
+void	move_to_b(t_stack *a, t_stack *b, int min_a, int max_a)
 {
-	int i;
-	int max;
-	int	curr_max;
-
-	i = 0;
-	curr_max = find_max(stack);
-	if (stack->size == 0)
-		return (0);
-	max = stack->arr[0];
-	while (i < stack->size)
+	while (a->size != 2)
 	{
-		if (stack->arr[i] > max && stack->arr[i] != curr_max)
-			max = stack->arr[i];
-		i++;
+		if (a->arr[0] == min_a || a->arr[0] == max_a)
+			rotate_a(a);
+		else
+			push_b(a, b);
 	}
-	return (max);
+	if (a->arr[0] < a->arr[1])
+		rotate_a(a);
+
 }
 
-int find_position(t_stack *stack, int value)
+int	qs_with_stack(t_stack *a, t_stack *b, int min_a, int max_a)
 {
-	int pos;
-
-	pos = 0;
-	if (stack->size == 0)
-		return (-1);
-	if (stack->size == 1)
-		return 0;
-	while (stack->arr[pos] != value)
-		pos++;
-	return (pos);
-}
-
-int qs_with_stack(t_stack *a, t_stack *b, int low, int high)
-{
-	int pivot;
 	int i;
-	int min_b;
-	int max_b;
-	int max_a;
-	int min_a;
-	int pos;
-	int	flag;
+	int flag;
+	int j;
 
-	// pivot = a->arr[a->size >> 1];
-	pivot = a->arr[a->size - 1];
 	i = 0;
-	ft_printf("pivot: %d\n", pivot);
-	min_b = find_min(b);
-	max_b = find_max(b);
-	max_a = find_max(a);
-	min_a = find_min(a);
-	ft_printf("min_b: %d\n", min_b);
-	ft_printf("max_b: %d\n", max_b);
+	move_to_b(a, b, min_a, max_a);
 	print_info(a, b);
-	while (a->size != 0)
-		push_b(a, b);
 	while (b->size != 0)
 	{
-		flag = 0;
-		max_b = find_max(b);
-		pos = find_position(b, max_b);
-		if (pos < (1 + b->size / 2))
+		ft_printf("\nbest item: %d\n", b->arr[find_best_elem(a, b)]);
+		ft_printf("\nindex: %d\n", find_best_elem(a, b));
+		print_info(a, b);
+		i = find_best_elem(a, b);
+		j = b->arr[i];
+		while (b->arr[0] != j)
 		{
-			while (b->arr[0] != max_b)
-			{
-				if (flag == 0 && b->arr[0] == find_prev_max(b))
-				{
-					push_a(a, b);
-					flag = 1;
-				}
-				else
-					rotate_b(b);
-
-				// if (b->arr[i] < b->arr[i + 1])
-				// 	sb(b);
-			}
+			if (i < b->size / 2)
+				rotate_b(b);
+			else
+				rev_rotate_b(b);
 		}
-		else
+		// while (a->arr[0] < b->arr[0] || a->arr[a->size - 1] > b->arr[0])
+		while (!(a->arr[0] > b->arr[0] && a->arr[a->size - 1] < b->arr[0]))
 		{
-			while (b->arr[0] != max_b)
-			{
-				if (flag == 0 && b->arr[0] == find_prev_max(b))
-				{
-					push_a(a, b);
-					flag = 1;
-				}
-				else
-					rev_rotate_b(b);
-				// if (b->arr[i] < b->arr[i + 1])
-				// 	sb(b);
-			}
+			if (count_offset(a, j) < a->size / 2)
+				rotate_a(a);
+			else
+				rev_rotate_a(a);
 		}
 		push_a(a, b);
-		if (a->size > 1 && b->size > 1 && a->arr[i] > a->arr[i + 1] && b->arr[i] < b->arr[i + 1])
-			ss(a, b);
-		else if (a->size > 1 && a->arr[i] > a->arr[i + 1])
-			sa(a);
-		else if (b->size > 1 && b->arr[i] < b->arr[i + 1])
-			sb(b);
 	}
-	print_info(a, b);
-
-
-
-
-
-
-
-
-
-
-
-
-	return 0;
-	while (a->arr[i] != pivot)
+	if (find_position(a, min_a) < a->size / 2)
 	{
-		if (a->arr[i] < pivot)
-			push_b(a, b);
-		if (a->arr[i] > pivot && a->arr[i] > a->arr[i + 1])
-		{
-			if (b->size > 1 && b->arr[i + 1] > b->arr[i])
-				ss(a, b);
-			else
-				sa(a);
-		}
-		if (a->arr[i] > pivot)
-		{
-			if (b->size > 1 && b->arr[b->size - 1] > b->arr[i])
-				rotate_both(a, b);
-			else
-				rotate_a(a);
-		}
+		while (a->arr[0] != min_a)
+			rotate_a(a);
 	}
-	push_b(a, b);
-	max_a = find_max(a);
-	min_a = find_min(a);
+	else
+	{
+		while (a->arr[0] != min_a)
+			rev_rotate_a(a);
+	}
 	print_info(a, b);
-	// while (a->arr[i] < pivot)
+	return (0);
+}
+
+
+	// while (b->size != 0)
 	// {
-	// 	if (a->arr[i + 1] < pivot && a->arr[i] > a->arr[i + 1])
+	// 	flag = 0;
+	// 	max_b = find_max(b);
+	// 	pos = find_position(b, max_b);
+	// 	if (pos < (1 + b->size / 2))
+	// 	{
+	// 		while (b->arr[0] != max_b)
+	// 		{
+	// 			if (flag == 0 && b->arr[0] == find_prev_max(b))
+	// 			{
+	// 				push_a(a, b);
+	// 				flag = 1;
+	// 			}
+	// 			else
+	// 				rotate_b(b);
+
+	// 			// if (b->arr[i] < b->arr[i + 1])
+	// 			// 	sb(b);
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		while (b->arr[0] != max_b)
+	// 		{
+	// 			if (flag == 0 && b->arr[0] == find_prev_max(b))
+	// 			{
+	// 				push_a(a, b);
+	// 				flag = 1;
+	// 			}
+	// 			else
+	// 				rev_rotate_b(b);
+	// 			// if (b->arr[i] < b->arr[i + 1])
+	// 			// 	sb(b);
+	// 		}
+	// 	}
+	// 	push_a(a, b);
+	// 	if (a->size > 1 && b->size > 1 && a->arr[i] > a->arr[i + 1] && b->arr[i] < b->arr[i + 1])
+	// 		ss(a, b);
+	// 	else if (a->size > 1 && a->arr[i] > a->arr[i + 1])
 	// 		sa(a);
-	// 	push_b(a, b);
-	// 	// print_info(a, b);
+	// 	else if (b->size > 1 && b->arr[i] < b->arr[i + 1])
+	// 		sb(b);
+	// }
+	// print_info(a, b);
+
+	// return 0;
+	// while (a->arr[i] != pivot)
+	// {
+	// 	if (a->arr[i] < pivot)
+	// 		push_b(a, b);
+	// 	if (a->arr[i] > pivot && a->arr[i] > a->arr[i + 1])
+	// 	{
+	// 		if (b->size > 1 && b->arr[i + 1] > b->arr[i])
+	// 			ss(a, b);
+	// 		else
+	// 			sa(a);
+	// 	}
+	// 	if (a->arr[i] > pivot)
+	// 	{
+	// 		if (b->size > 1 && b->arr[b->size - 1] > b->arr[i])
+	// 			rotate_both(a, b);
+	// 		else
+	// 			rotate_a(a);
+	// 	}
+	// }
+	// push_b(a, b);
+	// max_a = find_max(a);
+	// min_a = find_min(a);
+	// print_info(a, b);
+	// // while (a->arr[i] < pivot)
+	// // {
+	// // 	if (a->arr[i + 1] < pivot && a->arr[i] > a->arr[i + 1])
+	// // 		sa(a);
+	// // 	push_b(a, b);
+	// // 	// print_info(a, b);
+	// // }
+	// // while (a->arr[i] > pivot)
+	// // {
+	// // 	rotate_a(a);
+	// // 	while (a->arr[i] < pivot)
+	// // 	{
+	// // 		push_b(a, b);
+	// // 	}
+	// // }
+	// // rotate_a(a);
+	// return (0);
+	// while (a->arr[i] != pivot)
+	// {
+	// 	if (a->arr[i] < pivot)
+	// 		push_b(a, b);
+	// 	if (a->arr[i] > pivot)
+	// 		rotate_a(a);
 	// }
 	// while (a->arr[i] > pivot)
 	// {
@@ -202,52 +220,34 @@ int qs_with_stack(t_stack *a, t_stack *b, int low, int high)
 	// 		push_b(a, b);
 	// 	}
 	// }
-	// rotate_a(a);
-	return (0);
-	while (a->arr[i] != pivot)
-	{
-		if (a->arr[i] < pivot)
-			push_b(a, b);
-		if (a->arr[i] > pivot)
-			rotate_a(a);
-	}
-	while (a->arr[i] > pivot)
-	{
-		rotate_a(a);
-		while (a->arr[i] < pivot)
-		{
-			push_b(a, b);
-		}
-	}
-	print_info(a, b);
+	// print_info(a, b);
+	// // return (0);
+	// while (a->size != 0)
+	// {
+	// 	max_a = find_max(a);
+	// 	while (a->arr[0] != max_a)
+	// 	{
+	// 		if (a->arr[i] > a->arr[i + 1])
+	// 			sa(a);
+	// 		if (a->arr[0] == max_a)
+	// 			break;
+	// 		rotate_b(a);
+	// 	}
+	// 	push_b(a, b);
+	// }
+	// while (b->size != 0)
+	// {
+	// 	max_b = find_max(b);
+	// 	while (b->arr[0] != max_b)
+	// 	{
+	// 		if (b->arr[i] > b->arr[i + 1])
+	// 			sb(b);
+	// 		if (b->arr[0] == max_b)
+	// 			break;
+	// 		rotate_b(b);
+	// 	}
+	// 	push_a(a, b);
+	// }
+	// // qs_with_stack(a, b, low, high);
+	// print_info(a, b);
 	// return (0);
-	while (a->size != 0)
-	{
-		max_a = find_max(a);
-		while (a->arr[0] != max_a)
-		{
-			if (a->arr[i] > a->arr[i + 1])
-				sa(a);
-			if (a->arr[0] == max_a)
-				break;
-			rotate_b(a);
-		}
-		push_b(a, b);
-	}
-	while (b->size != 0)
-	{
-		max_b = find_max(b);
-		while (b->arr[0] != max_b)
-		{
-			if (b->arr[i] > b->arr[i + 1])
-				sb(b);
-			if (b->arr[0] == max_b)
-				break;
-			rotate_b(b);
-		}
-		push_a(a, b);
-	}
-	// qs_with_stack(a, b, low, high);
-	print_info(a, b);
-	return (0);
-}

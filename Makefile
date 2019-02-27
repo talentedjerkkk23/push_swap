@@ -5,7 +5,7 @@ SRC_PROGRAM = program/push_swap.c program/
 TEST_SRC = stack/manipulate.c stack/stack.c stack/stack_utils.c \
 			validation/validation.c stack/operations.c helpers/helpers.c \
 			checker_src/read_input.c checker_src/validate_comands.c program/valid_sorting.c \
-			program/sort.c
+			program/sort.c program/sort_helpers.c
 
 HEAD = push_swap.h libft/libft.h
 

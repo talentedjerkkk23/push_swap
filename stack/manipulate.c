@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manipulate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
+/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:30:46 by palan             #+#    #+#             */
-/*   Updated: 2019/02/24 15:48:55 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/02/28 15:38:53 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,18 @@ int			pop_item(t_stack *stack)
 	return (ret);
 }
 
-void		sa(t_stack *a)
+void		sa(t_stack *a, char type)
 {
 	swap_stack(a);
 	a->operations++;
+	if (type == 'p')
+		ft_printf("sa\n");
 }
 
-void		sb(t_stack *b)
+void		sb(t_stack *b, char type)
 {
 	swap_stack(b);
 	b->operations++;
+	if (type == 'p')
+		ft_printf("sb\n");
 }

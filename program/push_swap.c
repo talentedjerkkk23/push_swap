@@ -6,12 +6,11 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:44:28 by palan             #+#    #+#             */
-/*   Updated: 2019/02/27 16:41:52 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/28 16:52:30 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int		*copy_arr(int *arr, int size)
 {
@@ -72,15 +71,15 @@ int		main(int ac, char **av)
 	// free(a->arr);
 	// free(b->arr);
 	// free(b);
-	while(i < a->size)
-	{
-		ft_printf("%d\n", a->ideal[i]);
-		i++;
-	}
+	// while (i < a->size)
+	// {
+	// 	ft_printf("%d\n", a->ideal[i]);
+	// 	i++;
+	// }
 	qs_with_stack(a, b, find_min(a), find_max(a));
 	a->operations += b->operations;
 	b->operations = 0;
-	ft_printf("operations: %d\n", a->operations);
+	// ft_printf("operations: %d\n", a->operations);
 	// quick_sort(a, 0, a->size - 1);
 	// print_info(a, b);
 	// ft_printf("%d\n", 24 >> 1);

@@ -6,7 +6,7 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 18:24:31 by palan             #+#    #+#             */
-/*   Updated: 2019/02/21 18:30:13 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/28 16:27:14 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,34 @@
 void	exec_comand(char *op, t_stack *a, t_stack *b)
 {
 	if (!ft_strcmp("sa", op))
-		swap_stack(a);
+		sa(a, 'c');
 	else if (!ft_strcmp("sb", op))
-		swap_stack(b);
+		sb(b, 'c');
 	else if (!ft_strcmp("ss", op))
-		ss(a, b);
+		ss(a, b, 'c');
 	else if (!ft_strcmp("pa", op))
-		push_a(a, b);
+		push_a(a, b, 'c');
 	else if (!ft_strcmp("pb", op))
-		push_b(a, b);
+		push_b(a, b, 'c');
 	else if (!ft_strcmp("ra", op))
-		rotate_a(a);
+		rotate_a(a, 'c');
 	else if (!ft_strcmp("rb", op))
-		rotate_b(b);
+		rotate_b(b, 'c');
 	else if (!ft_strcmp("rr", op))
-		rotate_both(a, b);
+		rotate_both(a, b, 'c');
 	else if (!ft_strcmp("rra", op))
-		rev_rotate_a(a);
+		rev_rotate_a(a, 'c');
 	else if (!ft_strcmp("rrb", op))
-		rev_rotate_b(b);
+		rev_rotate_b(b, 'c');
 	else if (!ft_strcmp("rrr", op))
-		rev_rotate_both(a, b);
+		rev_rotate_both(a, b, 'c');
 	print_info(a, b);
 }
 
 int		is_valid_operation(char *op)
 {
+	if (*op == '\0')
+		ft_printf("pusto\n");
 	if (!ft_strcmp("sa", op) || !ft_strcmp("sb", op) ||
 	!ft_strcmp("ss", op) || !ft_strcmp("pa", op) || !ft_strcmp("pb", op)
 	|| !ft_strcmp("ra", op) || !ft_strcmp("rb", op) || !ft_strcmp("rr", op)

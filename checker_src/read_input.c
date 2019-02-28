@@ -6,7 +6,7 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 16:41:47 by palan             #+#    #+#             */
-/*   Updated: 2019/02/21 18:49:32 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/28 16:20:30 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,6 @@ char	*read_input(t_stack *a, t_stack *b)
 	{
 		store_operations(info, line);
 		free(line);
-		// if (is_valid_operation(line))
-		// 	exec_comand(line, a, b);
-		// else
-		// 	return NULL;
 	}
 	is_all_valid(info);
 	int	i = 0;

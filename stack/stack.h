@@ -6,7 +6,7 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:28:30 by palan             #+#    #+#             */
-/*   Updated: 2019/02/27 14:19:38 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/28 15:41:18 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ typedef struct	s_stack
 	unsigned		operations;
 }					t_stack;
 
-void				sb(t_stack *b);
-void				sa(t_stack *a);
+void				sb(t_stack *b, char type);
+void				sa(t_stack *a, char type);
 void				operations_test(t_stack *a, t_stack *b);
 int					*parse_array(int ac, char **av);
 void				print_info(t_stack *a, t_stack *b);
@@ -55,16 +55,16 @@ void				shift_up(t_stack *stack);
 void				shift_down(t_stack *stack);
 void				fill_stack(t_stack *stack, int *mass);
 t_stack				*create_item(int val);
-void				push_a(t_stack *a, t_stack *b);
-void				push_b(t_stack *a, t_stack *b);
-void				rotate_a(t_stack *a);
-void				rotate_b(t_stack *b);
-void				rotate_both(t_stack *a, t_stack *b);
+void				push_a(t_stack *a, t_stack *b, char type);
+void				push_b(t_stack *a, t_stack *b, char type);
+void				rotate_a(t_stack *a, char type);
+void				rotate_b(t_stack *b, char type);
+void				rotate_both(t_stack *a, t_stack *b, char type);
 void				swap_stack(t_stack *stack);
-void				ss(t_stack *a, t_stack *b);
-void				rev_rotate_a(t_stack *a);
-void				rev_rotate_b(t_stack *b);
-void				rev_rotate_both(t_stack *a, t_stack *b);
+void				ss(t_stack *a, t_stack *b, char type);
+void				rev_rotate_a(t_stack *a, char type);
+void				rev_rotate_b(t_stack *b, char type);
+void				rev_rotate_both(t_stack *a, t_stack *b, char type);
 void				push_item(t_stack *first, t_stack *second);
 int					pop_item(t_stack *stack);
 

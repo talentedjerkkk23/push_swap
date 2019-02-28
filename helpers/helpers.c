@@ -6,7 +6,7 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 16:38:09 by palan             #+#    #+#             */
-/*   Updated: 2019/02/23 16:19:07 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/28 15:47:24 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		*parse_array(int ac, char **av)
 {
 	int *arr;
 	int i;
+
 	arr = (int *)malloc(sizeof(int) * ac - 1);
 	i = 1;
 	while (i < ac)
@@ -49,40 +50,4 @@ void	print_info(t_stack *a, t_stack *b)
 	ft_printf(" ___________________________\n");
 	ft_printf("a->size: %d\n", a->size);
 	ft_printf("b->size: %d\n", b->size);
-}
-
-void	operations_test(t_stack *a, t_stack *b)
-{
-	swap_stack(a);
-	print_info(a, b);
-
-	push_b(a, b);
-	print_info(a, b);
-
-	push_b(a, b);
-	print_info(a, b);
-
-	push_b(a, b);
-	print_info(a, b);
-
-	rotate_a(a);
-	print_info(a, b);
-
-	rotate_b(b);
-	print_info(a, b);
-
-	rev_rotate_both(a, b);
-	print_info(a, b);
-
-	swap_stack(a);
-	print_info(a, b);
-
-	push_a(a, b);
-	print_info(a, b);
-
-	push_a(a, b);
-	print_info(a, b);
-
-	push_a(a, b);
-	print_info(a, b);
 }

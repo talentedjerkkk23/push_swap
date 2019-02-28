@@ -6,11 +6,13 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:25:16 by palan             #+#    #+#             */
-/*   Updated: 2019/02/22 13:58:44 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/28 17:19:37 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+
 
 int		main(int ac, char **av)
 {
@@ -22,6 +24,7 @@ int		main(int ac, char **av)
 	if (ac == 1)
 		exit(0);
 	check_errors(ac, av);
+	ft_printf("av: %s\n", av[1]);
 	a = create_item(ac - 1);
 	b = create_item(ac - 1);
 	a->arr = parse_array(ac, av);
@@ -38,6 +41,6 @@ int		main(int ac, char **av)
 	free(b);
 	free(a);
 	oper = read_input(a, b);
-	// operations_test(a, b);
+	ft_printf("YOOO");
 	return (0);
 }

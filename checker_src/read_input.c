@@ -6,12 +6,56 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 16:41:47 by palan             #+#    #+#             */
-/*   Updated: 2019/02/28 16:20:30 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/28 17:44:24 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
+int	get_len(int ac, char **av)
+{
+	int		i;
+	int		count;
+	int		j;
+	char	**swap;
+
+	i = 1;
+	count = 0;
+	while (i < ac)
+	{
+		j = 0;
+		swap = ft_strsplit(av[i], ' ');
+		while (swap[j])
+			j++;
+		ft_free2darr(av[i], j);
+		count += j;
+	}
+	return (count);
+}
+
+char	**get_arr(int ac, char **av)
+{
+	char	**arr;
+	char	**swap;
+	int		i;
+	int		j;
+
+	i = 1;
+	j = 0;
+	while (i < ac)
+	{
+		swap = ft_strsplit(av[1], ' ');
+
+		j = 0;
+		while (av[i][j])
+		{
+			j++;
+		}
+		i++;
+	}
+
+	return (arr);
+}
 
 
 void	store_operations(t_info *info, char *oper)

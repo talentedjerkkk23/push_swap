@@ -6,16 +6,16 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:55:41 by palan             #+#    #+#             */
-/*   Updated: 2019/02/28 17:18:44 by palan            ###   ########.fr       */
+/*   Updated: 2019/02/28 17:37:48 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validation.h"
 
-int		is_int(int ac, char **av)
+int is_int(int ac, char **av)
 {
-	int		i;
-	long	n;
+	int i;
+	long n;
 
 	i = 1;
 	while (i < ac)
@@ -28,10 +28,10 @@ int		is_int(int ac, char **av)
 	return (1);
 }
 
-int		is_all_unique(int *arr, int size)
+int is_all_unique(int *arr, int size)
 {
 	int i;
-	int	j;
+	int j;
 
 	i = 0;
 	j = 0;
@@ -49,7 +49,25 @@ int		is_all_unique(int *arr, int size)
 	return (1);
 }
 
-int		validate_input(int ac, char **av)
+int valid_one(char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+	{
+		if ((i == 0 && !ft_isdigit(s[i]) && s[i] != '-'))
+			return (0);
+		else if ((i == 0 && s[i] == '-' && ft_strlen(s) == 1))
+			return (0);
+		else if ((i != 0 && !ft_isdigit(s[i])))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int validate_input(int ac, char **av)
 {
 	int i;
 	int j;
@@ -59,23 +77,22 @@ int		validate_input(int ac, char **av)
 	while (i < ac)
 	{
 		j = 0;
-		while (av[i][j])
-		{
-			if (av[i][j] != ' ' && (j == 0 && !ft_isdigit(av[i][j]) && av[i][j] != '-'))
-				return (0);
-			else if (av[i][j] != ' ' && (j == 0 && av[i][j] == '-' && ft_strlen(av[i]) == 1))
-				return (0);
-			else if (av[i][j] != ' ' && (j != 0 && !ft_isdigit(av[i][j])))
-				return (0);
-			j++;
-		}
+		if (valid_one(av[i]) == 0)
+			return (0);
+			// if ((j == 0 && !ft_isdigit(av[i][j]) && av[i][j] != '-'))
+			// 	return (0);
+			// else if ((j == 0 && av[i][j] == '-' && ft_strlen(av[i]) == 1))
+			// 	return (0);
+			// else if ((j != 0 && !ft_isdigit(av[i][j])))
+			// 	return (0);
+			// j++;
 		i++;
 	}
 	ft_printf("s\n");
 	return (1);
 }
 
-void	check_errors(int ac, char **av)
+void check_errors(int ac, char **av)
 {
 	if (!validate_input(ac, av) || !is_int(ac, av))
 	{

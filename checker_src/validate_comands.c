@@ -6,11 +6,22 @@
 /*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 18:24:31 by palan             #+#    #+#             */
-/*   Updated: 2019/03/01 12:03:41 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/03/01 22:42:04 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+void	exec_all(t_info *inf, t_stack *a, t_stack *b)
+{
+	int i;
+
+	while (inf->opers[i])
+	{
+		exec_comand(inf->opers[i], a, b);
+		i++;
+	}
+}
 
 void	exec_comand(char *op, t_stack *a, t_stack *b)
 {
@@ -36,7 +47,6 @@ void	exec_comand(char *op, t_stack *a, t_stack *b)
 		rev_rotate_b(b, 'c');
 	else if (!ft_strcmp("rrr", op))
 		rev_rotate_both(a, b, 'c');
-	print_info(a, b);
 }
 
 int		is_valid_operation(char *op)

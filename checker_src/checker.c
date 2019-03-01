@@ -6,7 +6,7 @@
 /*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:25:16 by palan             #+#    #+#             */
-/*   Updated: 2019/03/01 12:00:54 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/03/01 22:42:17 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ int		main(int ac, char **av)
 	int		i;
 	int		len;
 	char	*oper;
+	t_info	*inf;
 
 	if (ac == 1)
 		exit(0);
+	inf = (t_info*)malloc(sizeof(t_info));
 	char **arr = get_arr(ac, av);
 	len = get_len(ac, av);
 	i = 0;
@@ -44,14 +46,24 @@ int		main(int ac, char **av)
 		exit(0);
 	}
 	b->arr = (int *)malloc(sizeof(int) * (len));
+	a->ideal = copy_arr(a->arr, a->size);
+	quick_sort(a, 0, a->max_size - 1);
 	b->size = 0;
 	i = 0;
-	free(a->arr);
+	// free(a->arr);
 	// free(b->arr);
 	// free(b);
 	// free(a);
-	oper = read_input(a, b);
-	exec_comand(oper, a, b);
+	// print_info(a, b);
+	oper = read_input(inf, a, b);
+	exec_all(inf, a, b);
+	// while (i < a->max_size)
+	// {
+	// 	ft_printf("%d\n", a->ideal[i]);
+	// 	i++;
+	// }
+	// ft_printf("a->size: %d\n", a->size);
+	// ft_printf("b->size: %d\n", b->size);
 	is_sorted(a, b);
 	ft_printf("OK\n");
 	// ft_printf("YOOO");

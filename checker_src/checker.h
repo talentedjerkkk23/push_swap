@@ -6,7 +6,7 @@
 /*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:44:47 by palan             #+#    #+#             */
-/*   Updated: 2019/03/01 11:12:54 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/03/01 22:31:15 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ typedef struct	s_info
 	int			oper_count;
 }				t_info;
 
-
+void			exec_all(t_info *inf, t_stack *a, t_stack *b);
 char			**get_arr(int ac, char **av);
 int				get_len(int ac, char **av);
-char			*read_input(t_stack *a, t_stack *b);
+char			*read_input(t_info *info, t_stack *a, t_stack *b);
 void			exec_comand(char *op, t_stack *a, t_stack *b);
 int				is_valid_operation(char *op);
 int				is_all_valid(t_info *info);

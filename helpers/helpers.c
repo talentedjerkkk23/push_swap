@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 16:38:09 by palan             #+#    #+#             */
-/*   Updated: 2019/02/28 15:47:24 by palan            ###   ########.fr       */
+/*   Updated: 2019/03/01 22:36:23 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../program/push_swap.h"
+
+int		*copy_arr(int *arr, int size)
+{
+	int	i;
+	int	*new_arr;
+
+	i = 0;
+	new_arr = (int*)malloc(sizeof(int) * size);
+	while (i < size)
+	{
+		new_arr[i] = arr[i];
+		i++;
+	}
+	return (new_arr);
+}
 
 int		*parse_array(int ac, char **av)
 {
@@ -18,10 +33,10 @@ int		*parse_array(int ac, char **av)
 	int i;
 
 	arr = (int *)malloc(sizeof(int) * ac - 1);
-	i = 1;
+	i = 0;
 	while (i < ac)
 	{
-		arr[i - 1] = ft_atoi(av[i]);
+		arr[i] = ft_atoi(av[i]);
 		i++;
 	}
 	return (arr);

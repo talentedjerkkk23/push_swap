@@ -6,28 +6,11 @@
 /*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:44:28 by palan             #+#    #+#             */
-/*   Updated: 2019/03/01 12:01:56 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/03/01 22:41:31 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int		*copy_arr(int *arr, int size)
-{
-	int	i;
-	int	*new_arr;
-
-	i = 0;
-	new_arr = (int*)malloc(sizeof(int) * size);
-	while (i < size)
-	{
-		new_arr[i] = arr[i];
-		i++;
-	}
-	return (new_arr);
-}
-
-
 
 int		main(int ac, char **av)
 {
@@ -67,6 +50,7 @@ int		main(int ac, char **av)
 	qs_with_stack(a, b, find_min(a), find_max(a));
 	a->operations += b->operations;
 	b->operations = 0;
+	// print_info(a, b);
 	// ft_printf("operations: %d\n", a->operations);
 	// quick_sort(a, 0, a->size - 1);
 	// print_info(a, b);

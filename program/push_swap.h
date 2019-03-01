@@ -6,7 +6,7 @@
 /*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:44:40 by palan             #+#    #+#             */
-/*   Updated: 2019/03/01 11:57:59 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/03/01 21:30:21 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 **
 **
 */
-
+int		*copy_arr(int *arr, int size);
 int		count_offset(t_stack *a, int elem);
 int		find_position(t_stack *stack, int value);
 int		find_sorted_index(int *sorted_arr, int size, int value);

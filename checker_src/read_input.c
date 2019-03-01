@@ -6,7 +6,7 @@
 /*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 16:41:47 by palan             #+#    #+#             */
-/*   Updated: 2019/03/01 11:55:18 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/03/01 22:41:43 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,25 +88,17 @@ void	store_operations(t_info *info, char *oper)
 	info->opers = arr;
 }
 
-char	*read_input(t_stack *a, t_stack *b)
+char	*read_input(t_info *inf, t_stack *a, t_stack *b)
 {
 	char	*line;
 	char	*tmp;
-	t_info	*info;
 
-	info = (t_info*)malloc(sizeof(t_info));
-	info->oper_count = 0;
+	inf->oper_count = 0;
 	while (get_next_line(0, &line))
 	{
-		store_operations(info, line);
+		store_operations(inf, line);
 		free(line);
 	}
-	is_all_valid(info);
-	int	i = 0;
-	// while (i < info->oper_count)
-	// {
-	// 	ft_printf("%s\n", info->opers[i]);
-	// 	i++;
-	// }
+	is_all_valid(inf);
 	return (line);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:25:16 by palan             #+#    #+#             */
-/*   Updated: 2019/02/28 17:19:37 by palan            ###   ########.fr       */
+/*   Updated: 2019/03/01 12:00:54 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,41 @@ int		main(int ac, char **av)
 	t_stack	*a;
 	t_stack	*b;
 	int		i;
+	int		len;
 	char	*oper;
 
 	if (ac == 1)
 		exit(0);
-	check_errors(ac, av);
-	ft_printf("av: %s\n", av[1]);
-	a = create_item(ac - 1);
-	b = create_item(ac - 1);
-	a->arr = parse_array(ac, av);
+	char **arr = get_arr(ac, av);
+	len = get_len(ac, av);
+	i = 0;
+	// ft_printf("len: %d\n", len);
+	// while (arr[i])
+	// {
+	// 	ft_printf("%s\n", arr[i]);
+	// 	i++;
+	// }
+	check_errors(len, arr);
+	// ft_printf("av: %s\n", av[1]);
+	a = create_item(len);
+	b = create_item(len);
+	a->arr = parse_array(len, arr);
 	if (!a->arr || !is_all_unique(a->arr, a->size - 1))
 	{
 		write(1, "Error\n", 6);
 		exit(0);
 	}
-	b->arr = (int *)malloc(sizeof(int) * (ac - 1));
+	b->arr = (int *)malloc(sizeof(int) * (len));
 	b->size = 0;
 	i = 0;
 	free(a->arr);
-	free(b->arr);
-	free(b);
-	free(a);
+	// free(b->arr);
+	// free(b);
+	// free(a);
 	oper = read_input(a, b);
-	ft_printf("YOOO");
+	exec_comand(oper, a, b);
+	is_sorted(a, b);
+	ft_printf("OK\n");
+	// ft_printf("YOOO");
 	return (0);
 }

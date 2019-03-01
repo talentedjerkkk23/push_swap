@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_comands.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 18:24:31 by palan             #+#    #+#             */
-/*   Updated: 2019/02/28 16:27:14 by palan            ###   ########.fr       */
+/*   Updated: 2019/03/01 12:03:41 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void	exec_comand(char *op, t_stack *a, t_stack *b)
 
 int		is_valid_operation(char *op)
 {
-	if (*op == '\0')
-		ft_printf("pusto\n");
 	if (!ft_strcmp("sa", op) || !ft_strcmp("sb", op) ||
 	!ft_strcmp("ss", op) || !ft_strcmp("pa", op) || !ft_strcmp("pb", op)
 	|| !ft_strcmp("ra", op) || !ft_strcmp("rb", op) || !ft_strcmp("rr", op)

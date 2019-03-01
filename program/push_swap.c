@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:44:28 by palan             #+#    #+#             */
-/*   Updated: 2019/02/28 16:52:30 by palan            ###   ########.fr       */
+/*   Updated: 2019/03/01 12:01:56 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,7 @@ int		*copy_arr(int *arr, int size)
 	return (new_arr);
 }
 
-int		is_sorted(int *valid_arr, int *sorted_arr, int size)
-{
-	int i;
 
-	i = 0;
-	while (i < size)
-	{
-		if (valid_arr[i] != sorted_arr[i])
-		{
-			write(1, "KO\n", 3);
-			exit(0);
-		}
-		i++;
-	}
-	return (1);
-}
 
 int		main(int ac, char **av)
 {
@@ -50,13 +35,16 @@ int		main(int ac, char **av)
 	t_stack	*b;
 	int		i;
 	char	*oper;
+	int len;
 
 	if (ac == 1)
 		exit(0);
-	check_errors(ac, av);
-	a = create_item(ac - 1);
-	b = create_item(ac - 1);
-	a->arr = parse_array(ac, av);
+	char **arr = get_arr(ac, av);
+	len = get_len(ac, av);
+	check_errors(len, arr);
+	a = create_item(len);
+	b = create_item(len);
+	a->arr = parse_array(len, arr);
 	if (!a->arr || !is_all_unique(a->arr, a->size))
 	{
 		write(2, "Error\n", 6);
@@ -64,7 +52,7 @@ int		main(int ac, char **av)
 	}
 	a->ideal = copy_arr(a->arr, a->size);
 	quick_sort(a, 0, a->size - 1);
-	b->arr = (int *)malloc(sizeof(int) * (ac - 1));
+	b->arr = (int *)malloc(sizeof(int) * (len));
 	b->size = 0;
 	i = 0;
 

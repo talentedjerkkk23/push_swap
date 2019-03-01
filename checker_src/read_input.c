@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 16:41:47 by palan             #+#    #+#             */
-/*   Updated: 2019/02/28 17:44:24 by palan            ###   ########.fr       */
+/*   Updated: 2019/03/01 11:55:18 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ int	get_len(int ac, char **av)
 		swap = ft_strsplit(av[i], ' ');
 		while (swap[j])
 			j++;
-		ft_free2darr(av[i], j);
+		ft_free2darr(swap, j);
 		count += j;
+		i++;
 	}
 	return (count);
 }
@@ -39,18 +40,23 @@ char	**get_arr(int ac, char **av)
 	char	**swap;
 	int		i;
 	int		j;
+	int		k;
 
 	i = 1;
 	j = 0;
+	k = 0;
+	arr = (char**)malloc(sizeof(char*) * (get_len(ac, av) + 1));
 	while (i < ac)
 	{
-		swap = ft_strsplit(av[1], ' ');
-
+		swap = ft_strsplit(av[i], ' ');
 		j = 0;
-		while (av[i][j])
+		while (swap[j])
 		{
+			arr[k] = ft_strdup(swap[j]);
 			j++;
+			k++;
 		}
+		ft_free2darr(swap, j - 1);
 		i++;
 	}
 
@@ -97,10 +103,10 @@ char	*read_input(t_stack *a, t_stack *b)
 	}
 	is_all_valid(info);
 	int	i = 0;
-	while (i < info->oper_count)
-	{
-		ft_printf("%s\n", info->opers[i]);
-		i++;
-	}
+	// while (i < info->oper_count)
+	// {
+	// 	ft_printf("%s\n", info->opers[i]);
+	// 	i++;
+	// }
 	return (line);
 }

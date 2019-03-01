@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_helpers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 14:30:42 by palan             #+#    #+#             */
-/*   Updated: 2019/02/28 10:31:21 by palan            ###   ########.fr       */
+/*   Updated: 2019/03/01 12:02:04 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,26 @@ int	count_offset(t_stack *a, int elem)
 		i++;
 	}
 	return (0);
+}
+
+int		is_sorted(t_stack *a, t_stack *b)
+{
+	int i;
+
+	i = 0;
+	if (a->size != a->max_size || b->size != 0)
+	{
+		write(1, "KO\n", 3);
+		exit(0);
+	}
+	while (i < a->size)
+	{
+		if (a->ideal[i] != a->arr[i])
+		{
+			write(1, "KO\n", 3);
+			exit(0);
+		}
+		i++;
+	}
+	return (1);
 }

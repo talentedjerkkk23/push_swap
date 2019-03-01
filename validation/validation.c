@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:55:41 by palan             #+#    #+#             */
-/*   Updated: 2019/02/28 17:37:48 by palan            ###   ########.fr       */
+/*   Updated: 2019/03/01 11:47:50 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int validate_input(int ac, char **av)
 			// j++;
 		i++;
 	}
-	ft_printf("s\n");
+	// ft_printf("s\n");
 	return (1);
 }
 

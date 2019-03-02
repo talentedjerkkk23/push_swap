@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 14:13:13 by palan             #+#    #+#             */
-/*   Updated: 2019/03/02 18:19:54 by palan            ###   ########.fr       */
+/*   Updated: 2019/03/03 00:17:42 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,28 @@ int find_best_elem(t_stack *a, t_stack *b)
 
 void move_to_b(t_stack *a, t_stack *b, int min_a, int max_a)
 {
-	while (a->size != 2)
+	int move_count;
+
+	move_count = a->max_size > 10 ? 3 : 3;
+	while (a->size != move_count)
 	{
 		if (a->arr[0] == min_a || a->arr[0] == max_a)
 			rotate_a(a, 'p');
 		else
 			push_b(a, b, 'p');
 	}
-	if (a->arr[0] < a->arr[1])
-		rotate_a(a, 'p');
+	if (a->size == 3)
+	{
+		move_count = find_max(a);
+		while (move_count == a->arr[0] || a->arr[0] == find_min(a))
+			rotate_a(a, 'p');
+		if (a->arr[1] < a->arr[0])
+			sa(a, 'p');
+		else
+			rev_rotate_a(a, 'p');
+	}
+	// if (a->arr[0] < a->arr[1])
+	// 	rotate_a(a, 'p');
 }
 
 void move_back_to_a(t_stack *a, t_stack *b, int i, int j)
@@ -128,8 +141,10 @@ int	qs_with_stack(t_stack *a, t_stack *b, int min_a, int max_a)
 {
 	int flag;
 
-	if (should_sort(a))
-		return (0);
+	if (a->size == 1)
+		exit(0);
+	// if (should_sort(a))
+		// return (0);
 	move_to_b(a, b, min_a, max_a);
 	move_back_to_a(a, b, 0, 0);
 	if (find_position(a, min_a) < a->size / 2)

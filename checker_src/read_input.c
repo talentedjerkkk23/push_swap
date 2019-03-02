@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 16:41:47 by palan             #+#    #+#             */
-/*   Updated: 2019/03/02 18:33:02 by palan            ###   ########.fr       */
+/*   Updated: 2019/03/02 23:37:07 by talentedjer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void		store_operations(t_info *info, char *oper)
 		info->opers = arr;
 		return ;
 	}
-	while (i < info->oper_count - 1)
+	while (i < (info->oper_count - 1))
 	{
 		arr[i] = ft_strdup(info->opers[i]);
 		i++;

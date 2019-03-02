@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
+/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 16:38:09 by palan             #+#    #+#             */
-/*   Updated: 2019/03/01 22:36:23 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/03/02 12:36:19 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		*parse_array(int ac, char **av)
 	int *arr;
 	int i;
 
-	arr = (int *)malloc(sizeof(int) * ac - 1);
+	arr = (int *)malloc(sizeof(int) * (ac - 1));
 	i = 0;
 	while (i < ac)
 	{

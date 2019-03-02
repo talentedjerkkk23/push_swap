@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_comands.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
+/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 18:24:31 by palan             #+#    #+#             */
-/*   Updated: 2019/03/01 22:42:04 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/03/02 12:31:42 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	exec_all(t_info *inf, t_stack *a, t_stack *b)
 {
 	int i;
 
-	while (inf->opers[i])
+	i = 0;
+	while (i < inf->oper_count)
 	{
 		exec_comand(inf->opers[i], a, b);
 		i++;

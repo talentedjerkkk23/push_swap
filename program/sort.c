@@ -6,7 +6,7 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 14:13:13 by palan             #+#    #+#             */
-/*   Updated: 2019/02/28 15:48:24 by palan            ###   ########.fr       */
+/*   Updated: 2019/03/02 18:19:54 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void move_back_to_a(t_stack *a, t_stack *b, int i, int j)
 					rotate_a(a, 'p');
 					rotate_b(b, 'p');
 				}
-				else if ((count_offset(a, j) > a->size / 2 && i >= b->size / 2))
+				else if (((count_offset(a, j) > a->size / 2) && i >= b->size / 2))
 				{
 					rev_rotate_a(a, 'p');
 					rev_rotate_b(b, 'p');
@@ -124,12 +124,13 @@ void move_back_to_a(t_stack *a, t_stack *b, int i, int j)
 	}
 }
 
-int qs_with_stack(t_stack *a, t_stack *b, int min_a, int max_a)
+int	qs_with_stack(t_stack *a, t_stack *b, int min_a, int max_a)
 {
 	int flag;
 
+	if (should_sort(a))
+		return (0);
 	move_to_b(a, b, min_a, max_a);
-	// print_info(a, b);
 	move_back_to_a(a, b, 0, 0);
 	if (find_position(a, min_a) < a->size / 2)
 	{

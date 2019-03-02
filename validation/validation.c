@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
+/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 13:55:41 by palan             #+#    #+#             */
-/*   Updated: 2019/03/01 11:47:50 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/03/02 17:09:55 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "validation.h"
 
-int is_int(int ac, char **av)
+int		is_int(int ac, char **av)
 {
 	int i;
 	long n;
@@ -28,7 +28,7 @@ int is_int(int ac, char **av)
 	return (1);
 }
 
-int is_all_unique(int *arr, int size)
+int		is_all_unique(int *arr, int size)
 {
 	int i;
 	int j;
@@ -49,7 +49,7 @@ int is_all_unique(int *arr, int size)
 	return (1);
 }
 
-int valid_one(char *s)
+int		valid_one(char *s)
 {
 	int i;
 
@@ -67,7 +67,7 @@ int valid_one(char *s)
 	return (1);
 }
 
-int validate_input(int ac, char **av)
+int		validate_input(int ac, char **av)
 {
 	int i;
 	int j;
@@ -92,7 +92,7 @@ int validate_input(int ac, char **av)
 	return (1);
 }
 
-void check_errors(int ac, char **av)
+void	check_errors(int ac, char **av)
 {
 	if (!validate_input(ac, av) || !is_int(ac, av))
 	{

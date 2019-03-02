@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   read_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
+/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 16:41:47 by palan             #+#    #+#             */
-/*   Updated: 2019/03/01 22:41:43 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/03/02 18:33:02 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int	get_len(int ac, char **av)
+int			get_len(int ac, char **av)
 {
 	int		i;
 	int		count;
@@ -34,7 +34,7 @@ int	get_len(int ac, char **av)
 	return (count);
 }
 
-char	**get_arr(int ac, char **av)
+char		**get_arr(int ac, char **av)
 {
 	char	**arr;
 	char	**swap;
@@ -45,7 +45,7 @@ char	**get_arr(int ac, char **av)
 	i = 1;
 	j = 0;
 	k = 0;
-	arr = (char**)malloc(sizeof(char*) * (get_len(ac, av) + 1));
+	arr = (char**)malloc(sizeof(char*) * (get_len(ac, av)));
 	while (i < ac)
 	{
 		swap = ft_strsplit(av[i], ' ');
@@ -56,15 +56,14 @@ char	**get_arr(int ac, char **av)
 			j++;
 			k++;
 		}
+		// ft_printf("get_len: %d\n", j);
 		ft_free2darr(swap, j - 1);
 		i++;
 	}
-
 	return (arr);
 }
 
-
-void	store_operations(t_info *info, char *oper)
+void		store_operations(t_info *info, char *oper)
 {
 	int		i;
 	char	**arr;
@@ -88,7 +87,7 @@ void	store_operations(t_info *info, char *oper)
 	info->opers = arr;
 }
 
-char	*read_input(t_info *inf, t_stack *a, t_stack *b)
+void		read_input(t_info *inf, t_stack *a, t_stack *b)
 {
 	char	*line;
 	char	*tmp;
@@ -99,6 +98,13 @@ char	*read_input(t_info *inf, t_stack *a, t_stack *b)
 		store_operations(inf, line);
 		free(line);
 	}
+	if (inf->oper_count == 0)
+	{
+		if (is_sorted(a, b))
+		{
+			ft_printf("OK\n");
+			exit(0);
+		}
+	}
 	is_all_valid(inf);
-	return (line);
 }

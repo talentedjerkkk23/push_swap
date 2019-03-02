@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
+/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:44:40 by palan             #+#    #+#             */
-/*   Updated: 2019/03/01 21:30:21 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/03/02 18:02:20 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 **
 **
 */
+
+void	move_to_b(t_stack *a, t_stack *b, int min_a, int max_a);
+int		should_sort(t_stack *a);
 int		*copy_arr(int *arr, int size);
 int		count_offset(t_stack *a, int elem);
 int		find_position(t_stack *stack, int value);

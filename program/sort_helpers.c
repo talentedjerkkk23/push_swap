@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   sort_helpers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
+/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 14:30:42 by palan             #+#    #+#             */
-/*   Updated: 2019/03/01 21:35:56 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/03/02 17:44:31 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	should_sort(t_stack *a)
+{
+	int i;
+
+	i = 0;
+	while (i < a->size)
+	{
+		if (a->ideal[i] != a->arr[i])
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int	find_position(t_stack *stack, int value)
 {

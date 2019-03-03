@@ -6,7 +6,7 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:24:26 by palan             #+#    #+#             */
-/*   Updated: 2019/02/22 13:16:04 by palan            ###   ########.fr       */
+/*   Updated: 2019/03/03 18:50:43 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "ft_printf.h"
 # include <string.h>
-# define BUFF_SIZE 5
+# define BUFF_SIZE 1000000
 
 void				ft_swap(int *a, int *b);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);

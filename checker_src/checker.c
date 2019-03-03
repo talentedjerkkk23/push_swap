@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
+/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 14:25:16 by palan             #+#    #+#             */
-/*   Updated: 2019/03/02 23:37:49 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/03/03 14:04:09 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ int		main(int ac, char **av)
 	int		i;
 	int		len;
 	t_info	*inf;
+	char	**arr;
 
 	if (ac == 1)
 		exit(0);
 	inf = (t_info*)malloc(sizeof(t_info));
-	char **arr = get_arr(ac, av);
+	arr = get_arr(ac, av);
 	len = get_len(ac, av);
 	// ft_printf("len: %d\n", len);
 	// ft_printf("inf->opers: %s\n", arr[0]);
@@ -43,6 +44,8 @@ int		main(int ac, char **av)
 	// ft_printf("av: %s\n", av[1]);
 	a = create_item(len);
 	b = create_item(len);
+	free(a->arr);
+	free(b->arr);
 	a->arr = parse_array(len, arr);
 	if (!a->arr || !is_all_unique(a->arr, a->size - 1))
 	{

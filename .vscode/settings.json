@@ -13,6 +13,7 @@
 		"string_view": "c",
 		"utility": "c",
 		"vector": "c",
-		"algorithm": "c"
+		"algorithm": "c",
+		"istream": "c"
 	}
 }

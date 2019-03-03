@@ -6,7 +6,7 @@
 /*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 17:32:25 by palan             #+#    #+#             */
-/*   Updated: 2019/02/28 15:36:57 by palan            ###   ########.fr       */
+/*   Updated: 2019/03/03 13:27:58 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ void		rerange(t_stack *stack)
 	int i;
 	int tmp;
 
-	// if (stack->size < 2)
-		// return ;
 	if (stack->size == 0)
 	{
 		stack->size++;

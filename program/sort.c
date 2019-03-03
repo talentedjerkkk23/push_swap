@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
+/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 14:13:13 by palan             #+#    #+#             */
-/*   Updated: 2019/03/03 00:17:42 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/03/03 18:37:04 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,25 @@ void move_to_b(t_stack *a, t_stack *b, int min_a, int max_a)
 {
 	int move_count;
 
-	move_count = a->max_size > 10 ? 3 : 3;
+	move_count = (a->max_size > 10) ? 2 : 3;
+	// print_info(a, b);
 	while (a->size != move_count)
 	{
+		// ft_printf("SEGA HERE: 1\n");
 		if (a->arr[0] == min_a || a->arr[0] == max_a)
-			rotate_a(a, 'p');
+		{
+				// ft_printf("SEGA HERE: 3\n");
+
+				rotate_a(a, 'p');
+		}
 		else
+		{
+				// ft_printf("SEGA HERE: 3\n");
+
 			push_b(a, b, 'p');
+		}
 	}
+		// ft_printf("SEGA HERE: 2\n");
 	if (a->size == 3)
 	{
 		move_count = find_max(a);
@@ -143,8 +154,8 @@ int	qs_with_stack(t_stack *a, t_stack *b, int min_a, int max_a)
 
 	if (a->size == 1)
 		exit(0);
-	// if (should_sort(a))
-		// return (0);
+	if (should_sort(a))
+		return (0);
 	move_to_b(a, b, min_a, max_a);
 	move_back_to_a(a, b, 0, 0);
 	if (find_position(a, min_a) < a->size / 2)

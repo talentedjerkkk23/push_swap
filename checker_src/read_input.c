@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: talentedjerk <talentedjerk@student.42.f    +#+  +:+       +#+        */
+/*   By: palan <palan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 16:41:47 by palan             #+#    #+#             */
-/*   Updated: 2019/03/02 23:37:07 by talentedjer      ###   ########.fr       */
+/*   Updated: 2019/03/03 18:50:01 by palan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ char		**get_arr(int ac, char **av)
 			j++;
 			k++;
 		}
-		// ft_printf("get_len: %d\n", j);
-		ft_free2darr(swap, j - 1);
+		ft_free2darr(swap, j );
 		i++;
 	}
 	return (arr);
@@ -90,12 +89,31 @@ void		store_operations(t_info *info, char *oper)
 void		read_input(t_info *inf, t_stack *a, t_stack *b)
 {
 	char	*line;
-	char	*tmp;
+	char	**tmp;
+	char	buf[BUFF_SIZE + 1];
+	int		ret;
 
 	inf->oper_count = 0;
-	while (get_next_line(0, &line))
+	// while (get_next_line(0, &line))
+	// {
+	// 	ft_printf("line: %s|\n", line);
+	// 	store_operations(inf, line);
+	// }
+	while ((ret = read(0, buf, BUFF_SIZE)) > 0)
 	{
-		store_operations(inf, line);
+		buf[ret - 1] = '\0';
+		line = ft_strdup(buf);
+		// ft_printf("line: %s|\n", line);
+		// ft_printf("line_len: %lu|\n", ft_strlen(line));
+		if (ft_strchr(line, '\n'))
+		{
+			ret = 0;
+			tmp = ft_strsplit(line, '\n');
+			while (tmp[ret])
+				store_operations(inf, tmp[ret++]);
+		}
+		else
+			store_operations(inf, line);
 		free(line);
 	}
 	if (inf->oper_count == 0)
